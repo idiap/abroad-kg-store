@@ -1,0 +1,392 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.abroad-ontology#"
+     xml:base="http://www.abroad-ontology"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:ro="http://www.obofoundry.org/ro/ro.owl#"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:bibo="http://purl.org/ontology/bibo/"
+     xmlns:cito="http://purl.org/spar/cito/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:void="http://rdfs.org/ns/void#"
+     xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:schema="http://schema.org/"
+     xmlns:cheminf="http://semanticscience.org/ontology/cheminf.owl#"
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:subsets="http://purl.obolibrary.org/obo/ro/subsets#"
+     xmlns:cheminf1="http://www.semanticweb.org/ontologies/cheminf.owl#"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+     xmlns:resource="http://semanticscience.org/resource/"
+     xmlns:ncbitaxon="http://purl.obolibrary.org/obo/ncbitaxon#"
+     xmlns:cheminf-core="http://semanticscience.org/ontology/cheminf-core.owl#">
+    <owl:Ontology rdf:about="http://www.abroad-ontology">
+        <owl:imports rdf:resource="http://purl.obolibrary.org/obo/bco/releases/2021-11-14/bco.owl"/>
+        <owl:imports rdf:resource="http://semanticchemistry.github.io/semanticchemistry/ontology/cheminf.owl"/>
+        <owl:imports rdf:resource="http://semanticscience.org/ontology/sio/v1.59/sio-release.owl"/>
+        <rdfs:comment>The ABRoad project ontology.
+Describing relations between Fungi Taxon, Chemical compounds and scientific articles.</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.abroad-ontology#hasChildTaxon -->
+
+    <owl:ObjectProperty rdf:about="http://www.abroad-ontology#hasChildTaxon">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002351"/>
+        <owl:inverseOf rdf:resource="http://www.abroad-ontology#isChildTaxonOf"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.abroad-ontology#AcceptedTaxon"/>
+        <rdfs:range rdf:resource="http://www.abroad-ontology#AcceptedTaxon"/>
+        <rdfs:comment>This property link an AcceptedTaxon entity to its child AcceptedTaxon in the taxonomy.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.abroad-ontology"/>
+        <rdfs:label>hasChildTaxon</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.abroad-ontology#hasSynonymTaxon -->
+
+    <owl:ObjectProperty rdf:about="http://www.abroad-ontology#hasSynonymTaxon">
+        <rdfs:subPropertyOf rdf:resource="http://www.abroad-ontology#synonymyRelation"/>
+        <owl:inverseOf rdf:resource="http://www.abroad-ontology#isSynonymTaxonOf"/>
+        <rdfs:domain rdf:resource="http://www.abroad-ontology#AcceptedTaxon"/>
+        <rdfs:range rdf:resource="http://www.abroad-ontology#SynonymTaxon"/>
+        <rdfs:comment>The AcceptedTaxon y has the SynonymTaxon x for synonym.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.abroad-ontology"/>
+        <rdfs:label>hasSynonymTaxon</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.abroad-ontology#isChildTaxonOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.abroad-ontology#isChildTaxonOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.obolibrary.org/obo/RO_0002350"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <rdfs:domain rdf:resource="http://www.abroad-ontology#AcceptedTaxon"/>
+        <rdfs:range rdf:resource="http://www.abroad-ontology#AcceptedTaxon"/>
+        <rdfs:comment>This property link an AcceptedTaxon entity to its parent AcceptedTaxon in the taxonomy.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.abroad-ontology"/>
+        <rdfs:label>isChildTaxonOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.abroad-ontology#isProducedByTaxon -->
+
+    <owl:ObjectProperty rdf:about="http://www.abroad-ontology#isProducedByTaxon">
+        <owl:inverseOf rdf:resource="http://www.abroad-ontology#taxonProduces"/>
+        <rdfs:domain rdf:resource="http://purl.obolibrary.org/obo/CHEBI_23367"/>
+        <rdfs:range rdf:resource="http://rs.tdwg.org/dwc/terms/Taxon"/>
+        <rdfs:comment>The molecular entity (CHEBI:23367) x is produced by the dwc:Taxon y</rdfs:comment>
+        <rdfs:label>isProducedByTaxon</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.abroad-ontology#isSynonymTaxonOf -->
+
+    <owl:ObjectProperty rdf:about="http://www.abroad-ontology#isSynonymTaxonOf">
+        <rdfs:subPropertyOf rdf:resource="http://www.abroad-ontology#synonymyRelation"/>
+        <rdfs:domain rdf:resource="http://www.abroad-ontology#SynonymTaxon"/>
+        <rdfs:range rdf:resource="http://www.abroad-ontology#AcceptedTaxon"/>
+        <rdfs:comment>The SynonymTaxon x entity is a synonym of the AcceptedTaxon y.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.abroad-ontology"/>
+        <rdfs:label>isSynonymTaxonOf</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.abroad-ontology#synonymyRelation -->
+
+    <owl:ObjectProperty rdf:about="http://www.abroad-ontology#synonymyRelation">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#TransitiveProperty"/>
+        <obo:IAO_0000411>A synonymy relation between Taxons.</obo:IAO_0000411>
+        <rdfs:isDefinedBy rdf:resource="http://www.abroad-ontology"/>
+        <rdfs:label>synonymyRelation</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.abroad-ontology#taxonProduces -->
+
+    <owl:ObjectProperty rdf:about="http://www.abroad-ontology#taxonProduces">
+        <rdfs:domain rdf:resource="http://rs.tdwg.org/dwc/terms/Taxon"/>
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/CHEBI_23367"/>
+        <rdfs:comment>The dwc:Taxon y produces the molecular entity (CHEBI:23367) x</rdfs:comment>
+        <rdfs:label>taxonProduces</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://rs.tdwg.org/dwc/terms/Taxon -->
+
+    <owl:Class rdf:about="http://rs.tdwg.org/dwc/terms/Taxon"/>
+    
+
+
+    <!-- http://semanticscience.org/resource/SIO_000257 -->
+
+    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000257"/>
+    
+
+
+    <!-- http://semanticscience.org/resource/SIO_000794 -->
+
+    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_000794"/>
+    
+
+
+    <!-- http://semanticscience.org/resource/SIO_001394 -->
+
+    <owl:Class rdf:about="http://semanticscience.org/resource/SIO_001394"/>
+    
+
+
+    <!-- http://www.abroad-ontology#AcceptedTaxon -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#AcceptedTaxon">
+        <rdfs:subClassOf rdf:resource="http://rs.tdwg.org/dwc/terms/Taxon"/>
+        <owl:disjointWith rdf:resource="http://www.abroad-ontology#SynonymTaxon"/>
+        <rdfs:comment>This entity is intended to represent an acceptedNameUsage entity (a currently valid or accepted taxon), pointed to by the acceptedNameUsageID DataType property. Only AcceptedTaxon entities can have taxonomic relations (eg. isChildTaxonOf)</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.abroad-ontology"/>
+        <rdfs:label>AcceptedTaxon</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#ActivityEvidence -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#ActivityEvidence">
+        <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_001394"/>
+        <rdfs:comment>An Activity Evidence is a piece of text providing evidences to support or contracdict the potential antibiotic activity of an organism or a chemical. It can be the the extract of a scientific article, or the product of an LLM inference over the scientific text to extract the evidences.</rdfs:comment>
+        <rdfs:label>An activity evidence</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#ActivityScore -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#ActivityScore">
+        <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000257"/>
+        <rdfs:comment>A score related to the potential therapeutic activity of a molecule.</rdfs:comment>
+        <rdfs:label>ActivityScore</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#ChunkNPR -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#ChunkNPR">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#TextNPR"/>
+        <owl:disjointWith rdf:resource="http://www.abroad-ontology#TiabNPR"/>
+        <rdfs:comment>A natural product relationship extracted via a Relation Extraction model from a chunk of text taken from the full-text of a scientific article. The full-text of the scientific article is extracted from the PubMed Central database.</rdfs:comment>
+        <rdfs:label>ChunkNPR</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#LotusNPR -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#LotusNPR">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#NaturalProductRelationship"/>
+        <owl:disjointWith rdf:resource="http://www.abroad-ontology#TextNPR"/>
+        <rdfs:comment>A natural product relationship extracted from the LOTUS database. LOTUS is an Open and FAIR database for natural products. The relationship is linked to a Wikidata reference.</rdfs:comment>
+        <rdfs:label>LotusNPR</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#MeSHActivityScore -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#MeSHActivityScore">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#ActivityScore"/>
+        <rdfs:comment>The Activity score associated to a MeSH term, annotated to an article.</rdfs:comment>
+        <rdfs:label>MeSHActivityScore</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#MediumActivityEvidence -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#MediumActivityEvidence">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#ActivityEvidence"/>
+        <rdfs:comment>The evidence is indirect or need to be confirmed by further experiments</rdfs:comment>
+        <rdfs:label>MediumActivityEvidence</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#MetaMeSHActivityScore -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#MetaMeSHActivityScore">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#ActivityScore"/>
+        <rdfs:comment>The Activity score associated to a PubMed article as a particular aggregator of the scores of the annotated MeSH.</rdfs:comment>
+        <rdfs:label>MetaMeSHActivityScore</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#NaturalProductRelationship -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#NaturalProductRelationship">
+        <rdfs:comment>A Natural product relationship where a Taxon produces a molecular entity. This is meant to be used as an intermediary entity to annotate information about the source and bibliographic references linked to the relation. The relation could have been extracted from the LOTUS database, or inferred from free text (abstract, title, passages) using an extraction model.</rdfs:comment>
+        <rdfs:label>NPR</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#NumberOfChemicalLiteratureAlerts -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#NumberOfChemicalLiteratureAlerts">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#NumberOfLiteratureAlerts"/>
+        <owl:disjointWith rdf:resource="http://www.abroad-ontology#NumberOfOrganismLiteratureAlerts"/>
+        <rdfs:comment>The number of alerts warning about the potential antibiotic activity of a taxonomic identification, extracted from the literature of the chemical (natural-products) related with the associated taxa.</rdfs:comment>
+        <rdfs:label>Number of chemical literature alerts</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#NumberOfLiteratureAlerts -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#NumberOfLiteratureAlerts">
+        <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000794"/>
+        <rdfs:comment>The number of alerts warning about the potential antibiotic activity of a taxonomic identification.</rdfs:comment>
+        <rdfs:label>Number of literature alerts</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#NumberOfOrganismLiteratureAlerts -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#NumberOfOrganismLiteratureAlerts">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#NumberOfLiteratureAlerts"/>
+        <rdfs:comment>The number of alerts warning about the potential antibiotic activity of a taxonomic identification, extracted from the literature of the associated accepted taxa.</rdfs:comment>
+        <rdfs:label>Number of organism literature alerts</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#RetrieverScore -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#RetrieverScore">
+        <rdfs:subClassOf rdf:resource="http://semanticscience.org/resource/SIO_000257"/>
+        <rdfs:comment>The score of a text block according to the retriever component. The score reflects the degree of confidence the retriever has in selecting the item for a subsequent extraction, such that the block expresses relationships between organisms and natural products.</rdfs:comment>
+        <rdfs:label>RetrieverScore</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#SS3ClassifierActivityScore -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#SS3ClassifierActivityScore">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#ActivityScore"/>
+        <rdfs:comment>The score obtained by a pySS3 classifier. The score reflects the probability that a document deals with the antibiotic activity of an organism or compound.</rdfs:comment>
+        <rdfs:label>SS3ClassifierActivityScore</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#StrongActivityEvidence -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#StrongActivityEvidence">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#ActivityEvidence"/>
+        <rdfs:comment>The evidence is clear and strong.</rdfs:comment>
+        <rdfs:label>StrongActivityEvidence</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#SynonymTaxon -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#SynonymTaxon">
+        <rdfs:subClassOf rdf:resource="http://rs.tdwg.org/dwc/terms/Taxon"/>
+        <rdfs:comment>A synoymous entity of a taxon. This entity does not represent the currently valid or accepted taxon, but a synonym of it. The identifier of the AcceptedTaxon is originaly indicated through the acceptedNameUsageId DataType property.</rdfs:comment>
+        <rdfs:isDefinedBy rdf:resource="http://www.abroad-ontology"/>
+        <rdfs:label>SynonymTaxon</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#TextNPR -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#TextNPR">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#NaturalProductRelationship"/>
+        <rdfs:comment>A natural product relationship extracted from raw text with a Relation Extraction model.</rdfs:comment>
+        <rdfs:label>TextNPR</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#TiabNPR -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#TiabNPR">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#TextNPR"/>
+        <rdfs:comment>A natural product relationship extracted via a Relation Extraction model from the title and abstract of a scientific article. The title and abstract are extracted from the PubMed database.</rdfs:comment>
+        <rdfs:label>TiabNPR</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.abroad-ontology#WeakActivityEvidence -->
+
+    <owl:Class rdf:about="http://www.abroad-ontology#WeakActivityEvidence">
+        <rdfs:subClassOf rdf:resource="http://www.abroad-ontology#ActivityEvidence"/>
+        <rdfs:comment>While the text contains information on the organism or chemical, there is no clear evidence of bioactivity.</rdfs:comment>
+        <rdfs:label>WeakActivityEvidence</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.abroad-ontology#MediumActivityEvidence"/>
+            <rdf:Description rdf:about="http://www.abroad-ontology#StrongActivityEvidence"/>
+            <rdf:Description rdf:about="http://www.abroad-ontology#WeakActivityEvidence"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
