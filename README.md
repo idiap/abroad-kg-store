@@ -17,7 +17,7 @@ docker pull openlink/virtuoso-opensource-7
 
 ### Download the demo data
 
-You can find the demo data at [link]().
+You can find the demo data at [link](https://zenodo.org/records/15481114).
 The directory contains all the triples and loading files to mount the Virtuoso triple-store.
 
 Save the data into a directory like `/path/to/data/dir`
